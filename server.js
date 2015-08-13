@@ -1,7 +1,14 @@
-var http = require('http');
-http.createServer(function(req, res){
-	res.end('hello world');
-}).listen(1088);
+var server = require('http').createServer();
+var io = require('socket.io')(server);
 
+io.sockets.on('connection', function (socket) {
+    console.log('socket connected');
 
-console.log('server is running at localhost:1088');
+    socket.on('disconnect', function () {
+        console.log('socket disconnected');
+    });
+    socket.emit('text', 'wow. such event. very real time.');
+});
+
+server.listen(8088);
+
