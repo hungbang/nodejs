@@ -4,10 +4,27 @@ $(document).ready(function() {
 		console.log(data);
 	});
 
+	// socket.on('chat', function(data){
+	// 	$('message').append($('<li>').text(data));
+	// })
+	socket.on("chatTo", function(msg){
+		console.log(msg);
+		$('#message').append($('<li>').text(msg));
+	});
 
+	$('#txtText').keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == 13){
+			fnSubmit(event);
+		}
+	});
 });
 var socket = io.connect('http://127.0.0.1:8088');
 function fnSubmit(ev){
-	var user = document.getElementById('user').value;
-	socket.emit('new-user', user);
+	var newChat = document.getElementById('txtText');
+	var content = document.getElementById('content');
+	socket.emit('chat', newChat.value);
+	newChat.value = "";
+	return false;
 }
+

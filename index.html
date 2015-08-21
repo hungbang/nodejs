@@ -7,11 +7,31 @@
 	<script src='client.js'></script> 
 </head>
 <body>
+	<style>
+		#content{
+			width: 100%;
+			height: 80%;
+		}
+		#txtText{
+			width: 80%;
+		}
+		#bottom{
+			width: 100%;
+			border-top: 1px solid black;
+			padding-top: 40px;
+			position: fixed;
+			bottom: 0;
+			margin-bottom: 40px;
+		}
+		li{
+			list-style: none;
+		}
+	</style>
 	
-	<textarea rows="4" cols="50" id="content"></textarea>
-	<br/>
-	<input type="text" id='user' size="52" multiple/>	
-	<br/>
-	<button id="submit" onclick='return fnSubmit(event);'>Send</button>
+	<ul id='message'></ul>
+	<div id="bottom">
+		<input type="text" id='txtText' size="100%" multiple/>	
+		<button id="submit" onclick='return fnSubmit(event);'>Send</button>
+	</div>
 </body>
 </html>
