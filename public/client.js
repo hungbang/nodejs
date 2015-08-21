@@ -21,7 +21,6 @@ $(document).ready(function() {
 });
 var socket = io.connect('http://127.0.0.1:2708');
 function fnSubmit(ev){
-	console.log('asfasdfasdf');
 	var newChat = document.getElementById('txtText');
 	var content = document.getElementById('content');
 	socket.emit('chat', newChat.value);
